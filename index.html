@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    async function onLoad() {
+  setTimeout(() => {
+    fetch('https://google3pc.onrender.com/custom/helloFromIframe', {
+      method: 'GET',
+      mode: 'cors', // Enable cross-origin resource sharing
+      credentials: 'include',
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      console.log(response.headers)
+      return response.text();
+    })
+    .then(data => {
+      console.log(data); // Output the response from the server
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
+  }, 6000);
+}
+onLoad()
+  </script>
+</head>
+<body>
+<div>
+  Hiii
+</div>
+</body>
+
+</html>
